@@ -5,3 +5,5 @@
 ```
 npm run build
 ```
+
+Open `index.html` under `dist/` to see the result.

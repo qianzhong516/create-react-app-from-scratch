@@ -1,9 +1,6 @@
-function component() {
-	const element = document.createElement('div');
+import React from 'react';
+import { App } from './app';
+import { createRoot } from 'react-dom/client';
 
-	element.innerHTML = 'Create React From Scratch!';
-
-	return element;
-}
-
-document.body.appendChild(component());
+const root = createRoot(document.querySelector('#root'));
+root.render(<App />);
