@@ -10,8 +10,8 @@ export const App = () => {
 
     return (
         <div>
-            <h1>Counter: {counter}</h1>
-            <button onClick={onClick}>Increase Counter</button>
+            <h1>Count: {counter}</h1>
+            <button onClick={onClick}>Increase</button>
         </div>
     );
 };

@@ -10,6 +10,13 @@ module.exports = {
         // clean /dist before each build
         clean: true,
     },
+    devtool: 'inline-source-map',
+    devServer: {
+        host: 'localhost',
+        port: '3000',
+        // serving static files from the directory (default: 'public')
+        static: './dist',
+    },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],
     },
