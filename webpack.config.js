@@ -5,8 +5,10 @@ module.exports = {
     mode: 'development',
     entry: './index.js',
     output: {
-        filename: 'main.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
+        // clean /dist before each build
+        clean: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -31,5 +33,16 @@ module.exports = {
                 },
             },
         ],
+    },
+    optimization: {
+        // to prevent vendor chunk from being regenerated due to module resolving order is changed
+        // when a new dependency is included
+        moduleIds: 'deterministic',
+        // extract the boilerplate for webpack runtime code
+        runtimeChunk: 'single',
+        // remove duplicate dependencies from bundles
+        splitChunks: {
+            chunks: 'all',
+        },
     },
 };
