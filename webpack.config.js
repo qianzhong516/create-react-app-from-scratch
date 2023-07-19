@@ -3,12 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './index.js',
+    entry: './src/index.tsx',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         // clean /dist before each build
         clean: true,
+    },
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json'],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -20,16 +23,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(?:js|mjs|cjs)$/,
+                test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            ['@babel/preset-env', { targets: 'defaults' }],
-                            ['@babel/preset-react'],
-                        ],
-                    },
                 },
             },
         ],
