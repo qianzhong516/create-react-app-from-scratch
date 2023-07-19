@@ -5,8 +5,10 @@
     "private": true,
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+        "type-check": "tsc",
+        "type-check:watch": "tsc --watch",
         "start": "npm run build",
-        "build": "webpack --config webpack.config.js"
+        "build": "npm run type-check && webpack --config webpack.config.js"
     },
     "keywords": [],
     "author": "",
