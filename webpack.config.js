@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.tsx',
+    entry: './client.tsx',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
@@ -11,12 +11,6 @@ module.exports = {
         clean: true,
     },
     devtool: 'inline-source-map',
-    devServer: {
-        host: 'localhost',
-        port: '3000',
-        // serving static files from the directory (default: 'public')
-        static: './dist',
-    },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],
     },
@@ -25,6 +19,8 @@ module.exports = {
             title: 'Create React From Scratch',
             meta: { viewport: 'width=device-width, initial-scale=1.0' },
             template: './index.html',
+            inject: 'body',
+            publicPath: '/dist',
         }),
     ],
     module: {
