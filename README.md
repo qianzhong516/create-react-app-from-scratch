@@ -2,8 +2,14 @@
 
 ### Build
 
+Type check and build the project by running
+
 ```
 npm run build
 ```
 
-Open `index.html` under `dist/` to see the result.
+Kick off the webpack dev server by running
+
+```
+npm run dev
+```
