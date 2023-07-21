@@ -7,16 +7,19 @@ import path from 'path';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
+app.use(
+    '/dist/client',
+    express.static(path.resolve(process.cwd(), 'dist/client'))
+);
 
 app.listen(PORT, () => {
     console.log('listening to port ' + PORT);
 });
 
-app.get('/', async (req: any, res: any) => {
+app.get('/', async (_, res) => {
     try {
         const html = fs.readFileSync(
-            path.resolve(__dirname, '../dist/index.html'),
+            path.resolve(process.cwd(), 'dist/client/index.html'),
             'utf-8'
         );
         const htmlContent = parse(html);
