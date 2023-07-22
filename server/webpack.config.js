@@ -1,26 +1,19 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 const config = {
-    entry: './client.tsx',
+    target: 'node',
+    entry: path.resolve(__dirname, 'server.ts'),
     output: {
-        filename: '[name].[contenthash].js',
-        path: path.resolve(__dirname, 'dist/client'),
+        filename: '[name].js',
+        path: path.resolve(__dirname, '../dist/server'),
         // clean /dist before each build
         clean: true,
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Create React From Scratch',
-            meta: { viewport: 'width=device-width, initial-scale=1.0' },
-            template: './index.html',
-            inject: 'body',
-            publicPath: '/dist/client',
-        }),
-    ],
+    plugins: [],
     module: {
         rules: [
             {
@@ -32,6 +25,10 @@ const config = {
             },
         ],
     },
+    // in order to ignore built-in modules like path, fs, etc.
+    externalsPresets: { node: true },
+    // in order to ignore all modules in node_modules folder
+    externals: [nodeExternals()],
     optimization: {
         // to prevent vendor chunk from being regenerated due to module resolving order is changed
         // when a new dependency is included
