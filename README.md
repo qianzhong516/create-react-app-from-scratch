@@ -1,6 +1,10 @@
 ## Create React From Scratch
 
-### Build
+### Client Side Rendering
+
+---
+
+#### Build
 
 Type check and build the project by running
 
@@ -14,6 +18,50 @@ Kick off the webpack dev server by running
 npm run dev
 ```
 
-### The idea of the isomorphic rendering
+### Server side Rendering
 
-SSR can greatly improve user's first interaction experience, where it optimizes SEO search experience and first page load time. In this demo, by accessing localhost:3000 will invoke server to read a pre-generated html file by `HtmlWebpackPlugin`, and inject the component we want to render into the `#root` div. On the client side, `hydrateRoot` is called to make sure the server generated content matches with the content we want to render.
+---
+
+#### The idea of the isomorphic rendering
+
+SSR can greatly improve user's first interaction experience by optimizing the first page load time. It also provides a better search engine experience where the crawl bot can access more meaningful content in your pre-generated html file whereas a pure client-side rendering page only contains `<div id="root"></div>`.
+
+#### Build
+
+Type check and build the project by running
+
+```
+npm run build
+```
+
+Boost up the server by running
+
+```
+npm run server
+```
+
+Access http://localhost:3000 to see the results.
+
+#### During development
+
+Run below scripts to watch and build files automatically along with the changes.
+
+With development mode, run
+
+```
+npm run dev:watch
+```
+
+With production mode, run
+
+```
+npm run prod:watch
+```
+
+You can also run
+
+```
+npm run type-check:watch
+```
+
+to prevent any type errors while developing the app.
